@@ -3,8 +3,8 @@ on:
     # NOTE: by doing this, we are using the object syntax so we can customize each part differently, maybe the pull requests on different branches, maybe the push on another branches, etc
     push:
     pull_request:
-    schedule:
-        - cron: '*/1 * * * *' # Every minute
+    # schedule:
+    #     - cron: '*/1 * * * *' # Every minute
     workflow_dispatch:
 jobs:
     print-workflow-event:
