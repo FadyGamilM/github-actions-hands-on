@@ -13,3 +13,26 @@ jobs:
             - name: listing codebase folder structure and files
               run: ls  -la 
         
+            - name: setup go 
+              uses: actions/setup-go@v4
+              with:
+                go-version: 'go1.24.2'
+            
+            - name: Cache Go modules
+              uses: actions/cache@v3
+              with:
+                path: |
+                  ~/.cache/go-build
+                  ~/go/pkg/mod
+                key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+                restore-keys: |
+                  ${{ runner.os }}-go-
+
+            - name: instal dependencies
+              run: go mod tidy
+
+            - name: run unit tests
+              run: go test ./... -v
+
+            - name: Run tests with coverage
+              run: go test ./... -coverprofile=coverage.out
