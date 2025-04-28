@@ -1,6 +1,7 @@
 
 name: 01_building-blocks
-on: push
+# on: push --> i am going to comment this for each section after i finish so i don't trigger all the workflows everytime i start a new workflow and new tutorial 
+on: workflow_dispatch
 jobs:
     say-hello:
         runs-on: ubuntu-latest
